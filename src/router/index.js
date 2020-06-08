@@ -20,7 +20,10 @@ Vue.use(VueRouter)
     path: '/detail',
     name: 'Detail',
     
-    component: () => import('../views/detail/Detail')
+    component: () => import('../views/detail/Detail'),
+    meta: {
+      title: '详情页'
+    }
   },
   {
     path: '/login',

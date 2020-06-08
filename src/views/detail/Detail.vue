@@ -1,37 +1,38 @@
 <template>
- <div>
-
- </div>
+  <div></div>
 </template>
 
 <script>
- export default {
-   name: '',
-   props: {
-   },
-   components: {
-
-   },
-   data () {
-     return {
-
-     }
-   },
-   methods: {
-
-   },
-   mounted() {
-
-   },
-   watch: {
-
-   },
-   computed: {
-
-   }
- }
+import axios from "axios";
+export default {
+  name: "Detail",
+  props: {},
+  components: {},
+  data() {
+    return {
+      id: "",
+      article: {}
+    }
+  },
+  methods: {
+    getData() {
+      axios
+        .get("https://cnodejs.org/api/v1/topic/$(this.id)")
+        .then(res => {
+          this.article = res.data.data
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  },
+  mounted() {
+    (this.id = this.$router.query.id), this.getData();
+  },
+  watch: {},
+  computed: {}
+};
 </script>
 
 <style scoped lang='scss'>
-
 </style>
